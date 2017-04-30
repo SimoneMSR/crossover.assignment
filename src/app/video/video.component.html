@@ -1,4 +1,15 @@
-<video  [id]="id" controls #videoelem (play)="startPlaying()">
-  <source  [src]="src" type="video/mp4">
-Your browser does not support the video tag.
-</video>
+<p (click)="openDetail()">{{video.name}}</p>
+<div>
+	<video  [id]="video._id" controls #videoelem (play)="startPlaying()">
+		<source  [src]="video.url" type="video/mp4"/>
+		Your browser does not support the video tag.
+	</video>
+</div>
+<div>{{video.description}}</div>
+<rating [(ngModel)]="rating"
+[max]="5"
+fullIcon="★"
+emptyIcon="☆"
+[readonly]="!ignoreClick"
+[disabled]="false">
+</rating>

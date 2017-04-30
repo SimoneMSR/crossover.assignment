@@ -15,10 +15,13 @@ import { VideoListComponent } from './video-list/video-list.component';
 import { NavigatorComponent } from './navigator/navigator.component';
 import { VideoComponent } from './video/video.component';
 import { ScrollTrackerDirective } from './directives/scroll-tracker.directive';
+import { DetailComponent } from './detail/detail.component';
+import {Rating} from "ngx-rating";
 
 const routes: Routes = [
 { path: 'list', component: VideoListComponent},
-{ path: 'login' , component : LoginComponent }
+{ path: 'login' , component : LoginComponent },
+{ path: 'single/:id' , component : DetailComponent }
 ]; 
 
 @NgModule({
@@ -28,7 +31,9 @@ const routes: Routes = [
   VideoListComponent,
   NavigatorComponent,
   VideoComponent,
-  ScrollTrackerDirective
+  ScrollTrackerDirective,
+  DetailComponent,
+  Rating
   ],
   imports: [
   BrowserModule,

@@ -21,14 +21,14 @@ export class VideoListComponent implements OnInit {
 		private componentFactoryResolver: ComponentFactoryResolver) { }
 
 	ngOnInit() {
-		this.fetchVideos();
 		this.videoElements = [];
 		this.videos = [];
+		this.fetchVideos();
 		this.fetchVideosOnScrollToBottom();
 	}
 
 	fetchVideos(){
-		this.videoService.getAllVideos().subscribe(videos => {
+		this.videoService.getAllVideos(this.videos.length,10).subscribe(videos => {
 			this.videos=this.videos.concat(videos);
 			var factory = this.componentFactoryResolver.resolveComponentFactory(VideoComponent);
 			var element : VideoComponent;
@@ -37,8 +37,7 @@ export class VideoListComponent implements OnInit {
 				ref = this.container.createComponent(factory);
 				element = (<VideoComponent> ref.instance);
 				this.videoElements.push(element.videoelement);
-				element.src=video.url; 
-				element.id=video._id; 
+				element.video=video; 
 				element.playClicked.subscribe(video => {
 					if(video.nativeElement.id != this.videoPlayingId){
 						this.videoPlayingId = video.nativeElement.id;

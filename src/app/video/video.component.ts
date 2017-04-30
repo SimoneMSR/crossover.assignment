@@ -1,4 +1,6 @@
 import { Component, OnInit , Input, Output, EventEmitter, ViewChild, ElementRef} from '@angular/core';
+import {Router} from "@angular/router";
+import {Video} from "../video.model";
 
 @Component({
   selector: 'app-video',
@@ -8,18 +10,28 @@ import { Component, OnInit , Input, Output, EventEmitter, ViewChild, ElementRef}
 export class VideoComponent implements OnInit {
 
 @ViewChild('videoelem') videoelement:ElementRef;
-	@Input() src : string;
-	@Input() id : string;
+	@Input() video : Video;
+	@Input() ignoreClick : boolean;
 	@Output() playClicked : EventEmitter<ElementRef>;
-  constructor() {
+	public rating : number;
+  constructor(private router : Router) {
   	this.playClicked = new EventEmitter<ElementRef>();
   }
 
   ngOnInit() {
+  	this.rating= VideoComponent.average(this.video.ratings);
   }
 
   startPlaying(){
   	this.playClicked.emit(this.videoelement);
   }
 
+  openDetail(){
+  	if(!this.ignoreClick)
+  		this.router.navigate(['/single' , this.video._id]);
+  }
+
+  private static average(array : number[]){
+  	return array.reduce( (p,c ) => p+c,0)/array.length;
+  }
 }
