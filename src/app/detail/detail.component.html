@@ -1,1 +1,8 @@
-<app-video *ngIf="video != null" [video]="video" [ignoreClick]="true"></app-video>
+<div class="detail-container row">
+	<div class="col-md-8">
+		<app-video *ngIf="video != null" [video]="video" [ignoreClick]="true"></app-video>
+	</div>
+	<div  class="list col-md-4">
+		<app-video-list></app-video-list>
+	</div>
+</div>

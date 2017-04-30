@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+html, body {
+	height: 100%;
+	overflow-y: hidden;
+}
+
+.container, .container > .row, .container > .row > .col {
+	height: 100%;
+}

@@ -1,4 +1,4 @@
-import { Directive, HostListener } from '@angular/core';
+import { Directive, HostListener, ViewContainerRef } from '@angular/core';
 import {EventsService} from "../events.service";
 
 @Directive({
@@ -6,11 +6,13 @@ import {EventsService} from "../events.service";
 })
 export class ScrollTrackerDirective {
 
-	constructor(private eventService : EventsService) {
+	constructor(private eventService : EventsService,
+		private ref : ViewContainerRef) {
 		var self=this;
-		document.addEventListener('scroll', function (event) {
-			if (document.body.scrollHeight === 
-				document.body.scrollTop +        
+		var element = <any> this.ref;
+		element._data.renderElement.addEventListener('scroll', function (event) {
+			if (event.target.scrollHeight === 
+				event.target.scrollTop +        
 				window.innerHeight) {
 				self.eventService.scrolledToBottom.next(true);
 		}
