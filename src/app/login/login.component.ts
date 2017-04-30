@@ -19,11 +19,10 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-  	this.router.navigate(["/list"]);
-  	//this.userService.login(this.username,this.password).subscribe(isLogged=>{
-  //		if(isLogged || true)
-  //			this.router.navigate(["/list"]);
-  //	});
+  	this.userService.login(this.username,this.password).subscribe(isLogged=>{
+  		if(isLogged || true)
+  			this.router.navigate(["/list"]);
+  	});
   }
 
 }

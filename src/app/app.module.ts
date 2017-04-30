@@ -9,26 +9,33 @@ import { LoginComponent } from './login/login.component';
 
 import {VideoService} from "./video.service";
 import {UserService} from "./user.service";
+import {EventsService} from "./events.service";
 import {BaseService} from "./base.service";
 import { VideoListComponent } from './video-list/video-list.component';
+import { NavigatorComponent } from './navigator/navigator.component';
+import { VideoComponent } from './video/video.component';
 
 const routes: Routes = [
-{ path: 'list', component: VideoListComponent}
+{ path: 'list', component: VideoListComponent},
+{ path: 'login' , component : LoginComponent }
 ]; 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    LoginComponent,
-    VideoListComponent
+  AppComponent,
+  LoginComponent,
+  VideoListComponent,
+  NavigatorComponent,
+  VideoComponent
   ],
   imports: [
-    BrowserModule,
-    FormsModule,
-    HttpModule,
-    RouterModule.forRoot(routes)
+  BrowserModule,
+  FormsModule,
+  HttpModule,
+  RouterModule.forRoot(routes)
   ],
-  providers: [BaseService, VideoService, UserService],
+  providers: [BaseService, VideoService, UserService, EventsService],
+  entryComponents : [VideoComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

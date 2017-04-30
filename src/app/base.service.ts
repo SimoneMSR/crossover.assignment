@@ -1,12 +1,24 @@
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs/Rx';
+import {EventsService} from "./events.service";
 
 @Injectable()
 export class BaseService {
 
 	protected baseUrl ="http://localhost:3000";
+	protected sessionId : string;
 	protected url : string;
-	constructor() { }
+	protected eventsService : EventsService;
+	constructor(eventsService : EventsService) {
+		this.eventsService = eventsService;
+  		this.setupObservables();
+	}
+
+	private setupObservables(){
+		this.eventsService.sessionIdUpdated.subscribe(newSessionId => {
+			this.sessionId=newSessionId;
+		})
+	}
 
 	protected serverError(err: any) {
 		console.log('sever error:', err);  // debug
