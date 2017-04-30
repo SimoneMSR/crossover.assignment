@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
 
   login(){
   	this.userService.login(this.username,this.password).subscribe(isLogged=>{
-  		if(isLogged || true)
+  		if(isLogged)
   			this.router.navigate(["/list"]);
   	});
   }

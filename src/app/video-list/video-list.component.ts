@@ -1,5 +1,6 @@
 import { Component, OnInit,ViewChild, ViewContainerRef, ComponentFactoryResolver, ElementRef } from '@angular/core';
 import {VideoService} from "../video.service"; 
+import {EventsService} from "../events.service"; 
 import {Video} from "../video.model";
 import {VideoComponent} from "../video/video.component";
 
@@ -15,21 +16,24 @@ export class VideoListComponent implements OnInit {
 	public videoPlayingId : string;
 	@ViewChild('videocontainer', { read: ViewContainerRef }) container;
 	constructor(private videoService : VideoService,
+		private eventsService : EventsService,
 		private viewContainerRef: ViewContainerRef,
 		private componentFactoryResolver: ComponentFactoryResolver) { }
 
 	ngOnInit() {
-		this.retrieveAllVideos();
+		this.fetchVideos();
 		this.videoElements = [];
+		this.videos = [];
+		this.fetchVideosOnScrollToBottom();
 	}
 
-	retrieveAllVideos(){
+	fetchVideos(){
 		this.videoService.getAllVideos().subscribe(videos => {
-			this.videos=videos;
+			this.videos=this.videos.concat(videos);
 			var factory = this.componentFactoryResolver.resolveComponentFactory(VideoComponent);
 			var element : VideoComponent;
 			var ref ;
-			for(let video of this.videos){
+			for(let video of videos){
 				ref = this.container.createComponent(factory);
 				element = (<VideoComponent> ref.instance);
 				this.videoElements.push(element.videoelement);
@@ -46,6 +50,18 @@ export class VideoListComponent implements OnInit {
 				});
 			}
 			ref.changeDetectorRef.detectChanges();
+		})
+	}
+
+	onScroll(event){
+		console.log(event);
+	}
+
+	fetchVideosOnScrollToBottom(){
+		this.eventsService.scrolledToBottom.subscribe(hasScrolled => {
+			if(hasScrolled){
+				this.fetchVideos();
+			}
 		})
 	}
 

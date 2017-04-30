@@ -14,6 +14,7 @@ import {BaseService} from "./base.service";
 import { VideoListComponent } from './video-list/video-list.component';
 import { NavigatorComponent } from './navigator/navigator.component';
 import { VideoComponent } from './video/video.component';
+import { ScrollTrackerDirective } from './directives/scroll-tracker.directive';
 
 const routes: Routes = [
 { path: 'list', component: VideoListComponent},
@@ -26,7 +27,8 @@ const routes: Routes = [
   LoginComponent,
   VideoListComponent,
   NavigatorComponent,
-  VideoComponent
+  VideoComponent,
+  ScrollTrackerDirective
   ],
   imports: [
   BrowserModule,
