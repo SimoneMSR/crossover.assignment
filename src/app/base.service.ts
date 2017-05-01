@@ -7,10 +7,12 @@ export class BaseService {
 
 	protected baseUrl ="http://localhost:3000";
 	protected sessionId : string;
+	protected static sessionIdStorageKey = "sessionId";
 	protected url : string;
 	protected eventsService : EventsService;
 	constructor(eventsService : EventsService) {
 		this.eventsService = eventsService;
+		  		 	this.eventsService.sessionIdUpdated.next(localStorage.getItem(BaseService.sessionIdStorageKey));
   		this.setupObservables();
 	}
 

@@ -18,8 +18,8 @@ export class UserService extends BaseService {
   	 	{"username" : username , "password" : Md5.hashStr(password)}).do(response => {
   	 		var json = response.json();
   		 if(response.status ==200 && json.status === "success"){
-  		 	localStorage.setItem("sessionId", json.sessionId);
-  		 	this.eventsService.sessionIdUpdated.next(localStorage.getItem("sessionId"));
+  		 	localStorage.setItem(BaseService.sessionIdStorageKey, json.sessionId);
+  		 	this.eventsService.sessionIdUpdated.next(localStorage.getItem(BaseService.sessionIdStorageKey));
   		 	this.eventsService.isLogged.next(true);
   		 }else{
   		 	this.eventsService.isLogged.next(false);
