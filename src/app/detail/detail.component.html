@@ -1,8 +1,8 @@
 <div class="detail-container">
-	<div class="col-md-8">
-		<app-video *ngIf="video != null" [video]="video" [ignoreClick]="true"></app-video>
-	</div>
 	<div  class="list col-md-4">
 		<app-video-list [singleColumn]="true"></app-video-list>
+	</div>
+	<div class="detail col-md-8 col-xs-12">
+		<app-video *ngIf="video != null" [video]="video" [ignoreClick]="true"></app-video>
 	</div>
 </div>

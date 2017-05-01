@@ -26,11 +26,11 @@ export class LoginComponent implements OnInit {
   }
 
   stopWind(){
-  	this.element.nativeElement.classList.remove("animate");
+  	this.element.nativeElement.classList.add("slow");
   }
 
   flowWind(){
-  	this.element.nativeElement.classList.add("animate");
+  	this.element.nativeElement.classList.remove("slow");
   }
 
 }

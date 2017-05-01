@@ -28,6 +28,7 @@ export class VideoComponent implements OnInit {
 
 	@Input() ignoreClick : boolean;
 	@Output() playClicked : EventEmitter<ElementRef>;
+	@Input () hideDescription : boolean;
 	public rating : number;
   constructor(private router : Router,
   		private videoService : VideoService) {

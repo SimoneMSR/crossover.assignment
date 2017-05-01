@@ -14,5 +14,5 @@
 		[readonly]="!ignoreClick"
 		[disabled]="false">
 	</rating>
-	<div>{{video.description}}</div>
+	<div [ngClass]="{'hidden': hideDescription}">{{video.description}}</div>
 </div>

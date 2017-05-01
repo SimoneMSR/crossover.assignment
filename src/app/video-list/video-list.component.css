@@ -1,6 +1,10 @@
+app-video{
+	padding : 15px;
+}
+
 .videos{
 	height: 100%;
-	overflow-y : scroll;
+    overflow-y: auto;
 }
 
 .row.is-flex {
@@ -10,4 +14,24 @@
 .row.is-flex > [class*='col-'] {
 	display: flex;
 	flex-direction: column;
+}
+
+
+@media only screen and (max-width : 992px) {
+	.horizontal {
+		width: 100%;
+		height: 250px;;
+		overflow: auto;
+	}
+
+	.horizontal > div{
+		display: table !important;
+		table-layout: fixed;
+		width: 100%;
+	}
+
+	.horizontal > div  app-video {
+		display: table-cell !important;
+		width : 250px !important;
+	}
 }

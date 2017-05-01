@@ -14,13 +14,20 @@
 	vertical-align: middle;
 }
 
-.login-container.animate{
-	animation : windy;
+.login-container {
 	animation-duration: 1s;
 	animation-timing-function: ease-in-out;
 	animation-iteration-count: infinite;
 	animation-direction: alternate;
 	transform-origin: 50% 20%;
+}
+
+.login-container.animate{
+	animation-name : windy;
+}
+
+.login-container.animate.slow{
+	animation-name: slow-windy;
 }
 
 img {
@@ -34,6 +41,16 @@ img {
 
 	100%{
 		transform: rotate(-15deg);
+	}
+}
+
+@keyframes slow-windy {
+	0% {
+		transform: rotate(1deg);
+	}
+
+	100%{
+		transform: rotate(-4deg);
 	}
 }
 

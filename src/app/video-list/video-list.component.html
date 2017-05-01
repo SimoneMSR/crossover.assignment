@@ -1,5 +1,5 @@
-<div class="videos col-xs-12" appScrollTracker>
+<div class="videos col-xs-12" [ngClass]="{'horizontal' : singleColumn}" appScrollTracker>
 	<div #videocontainer class="row is-flex">
-		<app-video [ngClass]="{'col-lg-3 col-md-6' : !singleColumn}" *ngFor="let video of videos" [video]="video" (playClicked)="videoPlayClicked($event)"></app-video>	
+		<app-video [ngClass]="{'col-lg-3 col-md-6' : !singleColumn, 'hide-descriptions' : singleColumn}" *ngFor="let video of videos" [video]="video" (playClicked)="videoPlayClicked($event)" [hideDescription]="singleColumn"></app-video>	
 	</div>
 </div>
