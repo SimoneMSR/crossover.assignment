@@ -1,4 +1,4 @@
-<div *ngIf="video != undefined">
+<div *ngIf="video != undefined" class="video-container">
 	<p (click)="openDetail()" [ngClass]="{'pointer': !ignoreClick}">{{video.name}}</p>
 	<div>
 		<video  [id]="video._id" controls #videoelem (play)="startPlaying()">
@@ -6,12 +6,13 @@
 			Your browser does not support the video tag.
 		</video>
 	</div>
-	<div>{{video.description}}</div>
 	<rating [(ngModel)]="rating"
-	[max]="5"
-	fullIcon="★"
-	emptyIcon="☆"
-	[readonly]="!ignoreClick"
-	[disabled]="false">
-</rating>
+		(ngModelChange)="rateVideo()"
+		[max]="5"
+		fullIcon="★"
+		emptyIcon="☆"
+		[readonly]="!ignoreClick"
+		[disabled]="false">
+	</rating>
+	<div>{{video.description}}</div>
 </div>

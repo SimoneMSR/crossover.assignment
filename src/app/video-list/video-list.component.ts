@@ -1,4 +1,4 @@
-import { Component, OnInit,ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit,ViewChild, ElementRef, Input } from '@angular/core';
 import {VideoService} from "../video.service"; 
 import {EventsService} from "../events.service"; 
 import {Video} from "../video.model";
@@ -14,6 +14,7 @@ export class VideoListComponent implements OnInit {
 	public videos : Video[];
 	public videoElements : ElementRef[];
 	public videoPlayingId : string;
+	@Input () singleColumn : boolean;
 	@ViewChild('videocontainer') container : ElementRef;
 	constructor(private videoService : VideoService,
 		private eventsService : EventsService) { }

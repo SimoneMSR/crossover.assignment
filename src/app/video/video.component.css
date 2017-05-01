@@ -2,6 +2,14 @@ video{
 	width: 100%;
 }
 
+p {
+	text-align: center;
+}
+
 p.pointer{
 	cursor: pointer;
+}
+
+.video-container{
+	text-align: justify;
 }

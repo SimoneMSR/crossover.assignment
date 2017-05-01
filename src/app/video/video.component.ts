@@ -1,6 +1,7 @@
 import { Component, OnInit , Input, Output, EventEmitter, ViewChild, ElementRef} from '@angular/core';
 import {Router} from "@angular/router";
 import {Video} from "../video.model";
+import {VideoService} from "../video.service";
 
 @Component({
   selector: 'app-video',
@@ -18,14 +19,18 @@ export class VideoComponent implements OnInit {
 		};
 		set video(value){
 			this._video=value;
-			if(value != null)
+			if(value != null){
+				if(this.videoelement != undefined)
+					this.videoelement.nativeElement.load();
 				this.rating= VideoComponent.average(this.video.ratings);
+			}
 		}
 
 	@Input() ignoreClick : boolean;
 	@Output() playClicked : EventEmitter<ElementRef>;
 	public rating : number;
-  constructor(private router : Router) {
+  constructor(private router : Router,
+  		private videoService : VideoService) {
   	this.playClicked = new EventEmitter<ElementRef>();
   }
 
@@ -44,5 +49,12 @@ export class VideoComponent implements OnInit {
 
   private static average(array : number[]){
   	return array.reduce( (p,c ) => p+c,0)/array.length;
+  }
+
+  rateVideo(){
+  	this.videoService.rateVideo(this.video._id,this.rating).subscribe(updated => {
+  		if(updated)
+  			alert("Your rate has been sent");
+  	})
   }
 }
