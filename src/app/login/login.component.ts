@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import {UserService} from "../user.service";
 import {Router} from "@angular/router";
 
@@ -11,7 +11,7 @@ export class LoginComponent implements OnInit {
 
 	public username : string;
 	public password : string;
-
+	@ViewChild('container') element:ElementRef;
   constructor(private userService : UserService,
   	private router : Router) { }
 
@@ -23,6 +23,14 @@ export class LoginComponent implements OnInit {
   		if(isLogged)
   			this.router.navigate(["/list"]);
   	});
+  }
+
+  stopWind(){
+  	this.element.nativeElement.classList.remove("animate");
+  }
+
+  flowWind(){
+  	this.element.nativeElement.classList.add("animate");
   }
 
 }

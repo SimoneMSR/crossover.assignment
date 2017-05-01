@@ -1,4 +1,4 @@
-import { Component, OnInit,ViewChild, ViewContainerRef, ComponentFactoryResolver, ElementRef } from '@angular/core';
+import { Component, OnInit,ViewChild, ElementRef } from '@angular/core';
 import {VideoService} from "../video.service"; 
 import {EventsService} from "../events.service"; 
 import {Video} from "../video.model";
@@ -14,11 +14,9 @@ export class VideoListComponent implements OnInit {
 	public videos : Video[];
 	public videoElements : ElementRef[];
 	public videoPlayingId : string;
-	@ViewChild('videocontainer', { read: ViewContainerRef }) container;
+	@ViewChild('videocontainer') container : ElementRef;
 	constructor(private videoService : VideoService,
-		private eventsService : EventsService,
-		private viewContainerRef: ViewContainerRef,
-		private componentFactoryResolver: ComponentFactoryResolver) { }
+		private eventsService : EventsService) { }
 
 	ngOnInit() {
 		this.videoElements = [];
@@ -30,26 +28,18 @@ export class VideoListComponent implements OnInit {
 	fetchVideos(){
 		this.videoService.getAllVideos(this.videos.length,10).subscribe(videos => {
 			this.videos=this.videos.concat(videos);
-			var factory = this.componentFactoryResolver.resolveComponentFactory(VideoComponent);
-			var element : VideoComponent;
-			var ref ;
-			for(let video of videos){
-				ref = this.container.createComponent(factory);
-				element = (<VideoComponent> ref.instance);
-				this.videoElements.push(element.videoelement);
-				element.video=video; 
-				element.playClicked.subscribe(video => {
-					if(video.nativeElement.id != this.videoPlayingId){
-						this.videoPlayingId = video.nativeElement.id;
-						for(let el of this.videoElements)
-							el.nativeElement.pause();
-						video.nativeElement.play();
-					}
-
-				});
-			}
-			ref.changeDetectorRef.detectChanges();
 		})
+	}
+
+	videoPlayClicked(video){
+		if(video.nativeElement.id != this.videoPlayingId){
+			this.videoPlayingId = video.nativeElement.id;
+			for(let el of this.container.nativeElement.childNodes){
+				if(el.tagName==="APP-VIDEO")					
+					el.getElementsByTagName("video")[0].pause();
+			}
+			video.nativeElement.play();
+		}
 	}
 
 	onScroll(event){

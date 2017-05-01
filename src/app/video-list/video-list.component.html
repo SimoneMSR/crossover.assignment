@@ -1,4 +1,5 @@
-<div class="videos" appScrollTracker>
-	<div #videocontainer>	
+<div class="videos col-xs-12" appScrollTracker>
+	<div #videocontainer class="row is-flex">
+		<app-video class="col-lg-3 col-md-6" *ngFor="let video of videos" [video]="video" (playClicked)="videoPlayClicked($event)"></app-video>	
 	</div>
 </div>

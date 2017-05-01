@@ -17,10 +17,12 @@ import { ScrollTrackerDirective } from './directives/scroll-tracker.directive';
 import { DetailComponent } from './detail/detail.component';
 import {Rating} from "ngx-rating";
 
+import {LoginGuard} from "./core/login.guard";
+
 const routes: Routes = [
-{ path: 'list', component: VideoListComponent},
+{ path: 'list', component: VideoListComponent, canActivate : [LoginGuard]},
 { path: 'login' , component : LoginComponent },
-{ path: 'single/:id' , component : DetailComponent }
+{ path: 'single/:id' , component : DetailComponent , canActivate : [LoginGuard]}
 ]; 
 
 @NgModule({
@@ -40,7 +42,7 @@ const routes: Routes = [
   HttpModule,
   RouterModule.forRoot(routes, { useHash: true })
   ],
-  providers: [BaseService, VideoService, UserService, EventsService],
+  providers: [BaseService, VideoService, UserService, EventsService, LoginGuard],
   entryComponents : [VideoComponent],
   bootstrap: [AppComponent]
 })

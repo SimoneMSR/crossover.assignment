@@ -10,7 +10,18 @@ import {Video} from "../video.model";
 export class VideoComponent implements OnInit {
 
 @ViewChild('videoelem') videoelement:ElementRef;
-	@Input() video : Video;
+
+	_video : Video;
+	@Input('video')
+		get video() : Video{
+			return this._video;
+		};
+		set video(value){
+			this._video=value;
+			if(value != null)
+				this.rating= VideoComponent.average(this.video.ratings);
+		}
+
 	@Input() ignoreClick : boolean;
 	@Output() playClicked : EventEmitter<ElementRef>;
 	public rating : number;
@@ -19,7 +30,7 @@ export class VideoComponent implements OnInit {
   }
 
   ngOnInit() {
-  	this.rating= VideoComponent.average(this.video.ratings);
+  	
   }
 
   startPlaying(){

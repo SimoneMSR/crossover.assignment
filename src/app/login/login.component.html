@@ -1,5 +1,13 @@
-<form  (ngSubmit)="login()">
-	<input type="text" name="name" [(ngModel)]="username" placeholder="username">
-	<input type="password" name="password" [(ngModel)]="password" placeholder="password">
-	<button type="submit" >LOGIN</button>
-</form>
+<div #container class="login-container animate">
+	<div>
+		<form  (ngSubmit)="login()"  (mouseleave)="flowWind()" (mouseover)="stopWind()">
+			<div class="from-group">
+				<input type="text" name="name" [(ngModel)]="username" placeholder="username">
+			</div>
+			<div class="from-group">
+				<input type="password" name="password" [(ngModel)]="password" placeholder="password">
+			</div>
+			<button type="submit" >LOGIN</button>
+		</form>
+	</div>
+</div>
