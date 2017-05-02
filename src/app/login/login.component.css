@@ -7,6 +7,7 @@
 	background-repeat: no-repeat;
 	background-size: contain;
 	background-position: center;
+	padding-top: 38px;
 }
 
 .login-container > div{
@@ -28,6 +29,18 @@
 
 .login-container.animate.slow{
 	animation-name: slow-windy;
+}
+
+input {
+	width: 38%;
+	border-style: none;
+}
+
+button {
+	border-radius: 20px;
+	background-color: darkseagreen;
+	margin-top: 5px;
+	border: 2px dotted white;
 }
 
 img {
