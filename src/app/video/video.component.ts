@@ -31,7 +31,8 @@ export class VideoComponent implements OnInit {
 	@Output() playClicked : EventEmitter<ElementRef>;
 	@Input () hideDescription : boolean;
 	public rating : number;
-  constructor(private router : Router,
+  constructor(private element : ElementRef,
+    private router : Router,
   		private videoService : VideoService,
   		private eventsService : EventsService) {
   	this.playClicked = new EventEmitter<ElementRef>();
@@ -60,4 +61,9 @@ export class VideoComponent implements OnInit {
   			this.eventsService.notifySuccess.next(true);
   	})
   }
+
+    stopVideo(){
+        this.element.nativeElement.getElementsByTagName("video")[0].pause();
+  }
+
 }

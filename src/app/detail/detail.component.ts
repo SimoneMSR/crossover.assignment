@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {VideoService} from "../video.service";
 import {Video} from "../video.model";
+import {VideoListComponent} from "../video-list/video-list.component";
+import {VideoComponent} from "../video/video.component";
 
 @Component({
   selector: 'app-detail',
@@ -12,6 +14,10 @@ export class DetailComponent implements OnInit {
 
 	private id : string;
 	public video : Video;
+  @ViewChild('list')
+    private listComponent : VideoListComponent;
+      @ViewChild('videoelement')
+    private videoelement : VideoComponent;
   constructor(private videoService : VideoService,
   	private route : ActivatedRoute) { }
 
@@ -22,6 +28,14 @@ export class DetailComponent implements OnInit {
   			this.video=video;
   		})
   	})
+  }
+
+  stopListVideos(){
+    this.listComponent.stopVideos();
+  }
+
+  stopVideo(){
+    this.videoelement.stopVideo();
   }
 
 }

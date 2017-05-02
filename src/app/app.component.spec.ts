@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { NavigatorComponent } from './navigator/navigator.component';
 import { LoginComponent } from './login/login.component';
+import { NotificationComponent } from './notification/notification.component';
 
 import {BaseService} from "./base.service"; 
 import {VideoService} from "./video.service"; 
@@ -17,7 +18,8 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent,
         NavigatorComponent,
-        LoginComponent
+        LoginComponent,
+        NotificationComponent
       ],
       imports : [FormsModule,
       

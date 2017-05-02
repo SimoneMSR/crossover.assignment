@@ -1,9 +1,16 @@
 .navigator {
-    position: fixed;
-    top: 90px;
-    left: 33px;
-    font-size: 3em;
-    border-radius: 100%;
-    color:rgb(252,182,23);
-    z-index: 2;
+	position: fixed;
+	top: 90px;
+	left: 33px;
+	font-size: 3em;
+	border-radius: 100%;
+	color:rgb(252,182,23);
+	z-index: 2;
+	cursor: pointer;
+	transition: transform 0.5s;
+}
+
+.navigator:hover {
+	transition: transform 0.5s;
+	transform: rotate(45deg);
 }

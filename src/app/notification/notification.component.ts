@@ -10,16 +10,21 @@ export class NotificationComponent implements OnInit {
 
 	@ViewChild('notifications') notifications : ElementRef;
   constructor(
+    private element : ElementRef,
   	private renderer : Renderer,
   	private eventsService : EventsService) { }
 
   ngOnInit() {
   	this.eventsService.notifySuccess.subscribe(mustNotify => {
   		if(mustNotify){
-  			let notification = this.renderer.createElement(this.notifications, "div");
+        var self=this;
+  			let notification = this.renderer.createElement(this.notifications.nativeElement, "div");
+        this.renderer.listen(notification, "animationend", () => {
+                self.notifications.nativeElement.removeChild(notification);
+        });
   			this.renderer.setElementClass(notification, "notification",true);
   			this.renderer.setElementClass(notification, "ion-checkmark-circled",true);
-  			this.renderer.projectNodes(this.notifications,[notification]);
+  			this.renderer.projectNodes(this.notifications.nativeElement,[notification]);
   		}
   	})
   }

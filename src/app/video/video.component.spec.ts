@@ -21,6 +21,7 @@ describe('VideoComponent', () => {
       declarations: [ VideoComponent, Rating],
       imports : [FormsModule],
       providers : [{ provide: Router },
+      {provide : EventsService, useValue : eventService},
       {provide : VideoService, useValue : videoService}]
     })
     .compileComponents();
