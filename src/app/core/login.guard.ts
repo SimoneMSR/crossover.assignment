@@ -1,7 +1,7 @@
 import {CanActivate} from "@angular/router";
 import {Injectable} from "@angular/core";
-import {EventsService} from "../events.service";
-import {BaseService} from "../base.service";
+import {EventsService} from "./services/events.service";
+import {BaseService} from "./services/base.service";
 import { Router} from '@angular/router'; 
 import {Observable} from 'rxjs/Rx';
  

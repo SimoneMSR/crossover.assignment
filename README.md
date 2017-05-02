@@ -6,8 +6,9 @@ This document is a report for the work I have done during developing the CrossPl
 1. Introduction
 2. Installation
 3. Run
-4. Test
-5. Documentation
+4. How to Demo
+5. Test
+6. Documentation
 
 ##INTRODUCTION
 
@@ -35,10 +36,37 @@ cp -R ./dist/* /path/to/node/backend/client
 
 ##RUN
 
+Follow these steps to run the app:
+
 cd /path/to/node/backend
 npm start
 
 open a browser and navigate to localhost:3000 (login:ali, password: password)
+
+##HOW TO DEMO
+
+The following is the default flow that a user can follow to experience the app funcionalities.
+
+- users navigate to localhost:3000
+
+- users login (-> access the videos list page)
+
+- in the list page, users can
+	a) scroll videos
+	b) play some video
+	c) open the detail of a video (by clicking on its title)
+	d) exit the app (by on the yellow X on the left)
+	
+- in the detail page users can
+	a) scroll video in the sidebar
+	b) play video
+	c) rate a video
+	d) open the detail of a video (by clicking on its title)
+	e) go back to the list page
+	f) exit the app (by on the yellow X on the left)
+	
+- users cannot navigate to localhost:3000/#/list if they are not logged
+- users cannot navigate to localhost:3000/#/detail if they are not logged
 
 ##TEST
 
@@ -50,9 +78,54 @@ ng test
 
 ##DOCUMENTATION
 
-CrossPlay has a single Module: the AppModule. This module contains
-- 4 Services (Base,User,Video and Event -service)
+CrossPlay has one single Module: the AppModule. This module contains
+- 4 Services (Base,User,Video and Events -service)
 - 7 Components (App, Login, VideoList, Video, Detail, Navigator and Notification -component)
 - 1 Directive (ScrollTrackerDirective)
 - 1 Guard (LoginGuard)
 - 1 model (Video)
+
+The source folder is thus organized in the following tree:
+- src
+	- core (contains services[4], directives[1], models[1] and guards[1])
+	- detail
+	- login
+	- navigator
+	- notification
+	- video
+	- video-list
+
+###Services
+Base, User and Video services are REST services; EventsService is an event manager that uses ReactiveJS.
+
+The UserService manages the user authentication, the VideoService manages the video fetching and rating.
+UserService and VideoService extends from BaseService, which defines two important common service property:
+
+- the server url
+- the exception management strategy
+
+These properties can be easily maintained due to modularization.
+
+EventsService manages the interaction between components, signaling the following events
+
+- isLogged (used by LoginComponent [to signal that the user has logged] and by LogindGuard [to permit masked routes to be accessed only by logged users])
+- scrolledToBottom (used by the ScrollTrackerDirective to signal the VideoListComponent that the user has scrolled)
+- notifySuccess (to signal the NotificationComponent that the user must be notified of a successfull operation)
+
+
+###Components
+
+The AppComponent is the app root. It holds 
+- the Navigator and Notification -components
+- the other components used by the app Router
+
+The main components are VideoListComponent and DetailComponent, they realize the content of the video list page and the detail page.
+
+Components use and reuse themselves, in these hierarchies:
+
+
+- VideoListComponent uses VideoComponent
+- DetailComponent uses VideoListComponent and VideoComponent
+
+Parents and children components communicate via EventEmitters (like the playClicked EventEmitter); non-relative components communicate via EventsService.
+

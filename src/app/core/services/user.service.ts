@@ -33,7 +33,7 @@ export class UserService extends BaseService {
   public logout() : Observable<boolean>{
   	return this.http.get(this.url + "/logout" +"?sessionId=" + this.sessionId ).do(response => {
   		if(response.status ==200){
-        localStorage.setItem(BaseService.sessionIdStorageKey,undefined);
+        localStorage.removeItem(BaseService.sessionIdStorageKey);
   			this.eventsService.isLogged.next(false);
       }
   	}).map(response => response.json().status === "success")
