@@ -2,6 +2,7 @@ import { Component, OnInit , Input, Output, EventEmitter, ViewChild, ElementRef}
 import {Router} from "@angular/router";
 import {Video} from "../video.model";
 import {VideoService} from "../video.service";
+import {EventsService} from "../events.service";
 
 @Component({
   selector: 'app-video',
@@ -31,7 +32,8 @@ export class VideoComponent implements OnInit {
 	@Input () hideDescription : boolean;
 	public rating : number;
   constructor(private router : Router,
-  		private videoService : VideoService) {
+  		private videoService : VideoService,
+  		private eventsService : EventsService) {
   	this.playClicked = new EventEmitter<ElementRef>();
   }
 
@@ -55,7 +57,7 @@ export class VideoComponent implements OnInit {
   rateVideo(){
   	this.videoService.rateVideo(this.video._id,this.rating).subscribe(updated => {
   		if(updated)
-  			alert("Your rate has been sent");
+  			this.eventsService.notifySuccess.next(true);
   	})
   }
 }

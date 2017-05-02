@@ -18,6 +18,7 @@ import { DetailComponent } from './detail/detail.component';
 import {Rating} from "ngx-rating";
 
 import {LoginGuard} from "./core/login.guard";
+import { NotificationComponent } from './notification/notification.component';
 
 const routes: Routes = [
 { path: 'list', component: VideoListComponent, canActivate : [LoginGuard]},
@@ -34,7 +35,8 @@ const routes: Routes = [
   VideoComponent,
   ScrollTrackerDirective,
   DetailComponent,
-  Rating
+  Rating,
+  NotificationComponent
   ],
   imports: [
   BrowserModule,

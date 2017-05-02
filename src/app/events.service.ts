@@ -7,10 +7,12 @@ export class EventsService {
 public sessionIdUpdated : BehaviorSubject<string>;
 public isLogged :BehaviorSubject<boolean>;
 public scrolledToBottom : BehaviorSubject<boolean>;
+public notifySuccess : BehaviorSubject<boolean>;
   constructor() {
   	this.sessionIdUpdated = new BehaviorSubject<string>(null);
   	this.isLogged = new BehaviorSubject<boolean>(false);
   	this.scrolledToBottom = new BehaviorSubject<boolean>(false);
+  	this.notifySuccess = new BehaviorSubject<boolean>(false);
   }
 
 }
