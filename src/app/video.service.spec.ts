@@ -1,15 +1,21 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { RestService } from './rest.service';
+import { VideoService } from './video.service';
+import { EventsService } from './events.service';
+import { UserService } from './user.service';
+import { Http } from '@angular/http';
 
-describe('RestService', () => {
-  beforeEach(() => {
+describe('VideoService', () => {
+    beforeEach(() => {
+  	var eventsService = new EventsService();
     TestBed.configureTestingModule({
-      providers: [RestService]
+      providers: [VideoService,
+      {provide : Http},
+      {provide : EventsService , useValue : eventsService}]
     });
   });
 
-  it('should ...', inject([RestService], (service: RestService) => {
+  it('should be loaded', inject([VideoService], (service: VideoService) => {
     expect(service).toBeTruthy();
   }));
 });

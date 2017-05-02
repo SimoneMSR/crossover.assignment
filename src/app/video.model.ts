@@ -4,4 +4,8 @@ export class Video {
 	url : string;
 	description : string;
 	ratings : number[];
+
+	constructor(){
+		this.ratings = [];
+	}
 }
