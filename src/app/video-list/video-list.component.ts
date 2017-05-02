@@ -1,7 +1,7 @@
 import { Component, OnInit,ViewChild, ElementRef, Input, Output, EventEmitter } from '@angular/core';
-import {VideoService} from "../video.service"; 
-import {EventsService} from "../events.service"; 
-import {Video} from "../video.model";
+import {VideoService} from "../core/services/video.service"; 
+import {EventsService} from "../core/services/events.service"; 
+import {Video} from "../core/video.model";
 import {VideoComponent} from "../video/video.component";
 
 @Component({

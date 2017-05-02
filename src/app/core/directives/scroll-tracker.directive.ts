@@ -1,8 +1,8 @@
 import { Directive, HostListener, ViewContainerRef } from '@angular/core';
-import {EventsService} from "../events.service";
+import {EventsService} from "../services/events.service";
 
 @Directive({
-	selector: '[appScrollTracker]'
+	selector: '[appScrollTracker]' 
 })
 export class ScrollTrackerDirective {
 

@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {VideoService} from "../video.service";
-import {Video} from "../video.model";
+import {VideoService} from "../core/services/video.service";
+import {Video} from "../core/video.model";
 import {VideoListComponent} from "../video-list/video-list.component";
 import {VideoComponent} from "../video/video.component";
 

@@ -1,8 +1,8 @@
 import { Component, OnInit , Input, Output, EventEmitter, ViewChild, ElementRef} from '@angular/core';
 import {Router} from "@angular/router";
-import {Video} from "../video.model";
-import {VideoService} from "../video.service";
-import {EventsService} from "../events.service";
+import {Video} from "../core/video.model";
+import {VideoService} from "../core/services/video.service";
+import {EventsService} from "../core/services/events.service";
 
 @Component({
   selector: 'app-video',

@@ -3,7 +3,7 @@ import { Http, Response } from '@angular/http';
 import {Observable} from 'rxjs/Rx';
 import {BaseService} from "./base.service";
 import {EventsService} from "./events.service";
-import {Video} from "./video.model";
+import {Video} from "../video.model";
 
 @Injectable()
 export class VideoService extends BaseService{

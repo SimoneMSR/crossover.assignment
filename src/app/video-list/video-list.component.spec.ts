@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { VideoListComponent } from './video-list.component';
 import { VideoComponent } from '../video/video.component';
-import { Video } from '../video.model';
+import { Video } from '../core/video.model';
 
 import {Rating} from "ngx-rating";
 
@@ -10,8 +10,8 @@ import {FormsModule} from '@angular/forms';
 import {Router} from '@angular/router'; 
 import { RouterTestingModule } from '@angular/router/testing';
 
-import {EventsService} from "../events.service";
-import {VideoService} from "../video.service";
+import {EventsService} from "../core/services/events.service";
+import {VideoService} from "../core/services/video.service";
 import { HttpModule, Http, BaseRequestOptions, XHRBackend } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
 

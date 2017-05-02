@@ -1,5 +1,5 @@
 import { Component, OnInit, Renderer, ViewChild, ElementRef } from '@angular/core';
-import {EventsService} from "../events.service";
+import {EventsService} from "../core/services/events.service";
 
 @Component({
   selector: 'app-notification',

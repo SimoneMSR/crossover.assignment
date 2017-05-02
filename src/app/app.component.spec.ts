@@ -7,10 +7,10 @@ import { NavigatorComponent } from './navigator/navigator.component';
 import { LoginComponent } from './login/login.component';
 import { NotificationComponent } from './notification/notification.component';
 
-import {BaseService} from "./base.service"; 
-import {VideoService} from "./video.service"; 
-import {EventsService} from "./events.service"; 
-import {UserService} from "./user.service"; 
+import {BaseService} from "./core/services/base.service"; 
+import {VideoService} from "./core/services/video.service"; 
+import {EventsService} from "./core/services/events.service"; 
+import {UserService} from "./core/services/user.service"; 
 
 describe('AppComponent', () => {
   beforeEach(async(() => {

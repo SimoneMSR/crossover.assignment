@@ -4,8 +4,8 @@ import { By }              from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
 import { LoginComponent } from './login.component';
-import {UserService} from "../user.service"; 
-import {EventsService} from "../events.service"; 
+import {UserService} from "../core/services/user.service"; 
+import {EventsService} from "../core/services/events.service"; 
 import {Router} from '@angular/router';
 
 describe('LoginComponent', () => {

@@ -8,7 +8,7 @@
 
 @media only screen and (max-width : 992px) {
 	.list{
-		height: 200px!important;
+		height: 220px!important;
 		float:none;
 		border-bottom: 1px solid;
 	}

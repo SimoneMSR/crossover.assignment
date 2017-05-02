@@ -7,8 +7,8 @@ import { FormsModule } from '@angular/forms';
 
 import {Router} from '@angular/router';
 
-import {VideoService} from "../video.service";
-import {EventsService} from "../events.service";
+import {VideoService} from "../core/services/video.service";
+import {EventsService} from "../core/services/events.service";
 
 describe('VideoComponent', () => {
   let component: VideoComponent;

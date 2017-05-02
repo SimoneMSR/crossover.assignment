@@ -6,14 +6,14 @@ import {RouterModule, Routes} from '@angular/router';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 
-import {VideoService} from "./video.service";
-import {UserService} from "./user.service";
-import {EventsService} from "./events.service";
-import {BaseService} from "./base.service";
+import {VideoService} from "./core/services/video.service";
+import {UserService} from "./core/services/user.service";
+import {EventsService} from "./core/services/events.service";
+import {BaseService} from "./core/services/base.service";
 import { VideoListComponent } from './video-list/video-list.component';
 import { NavigatorComponent } from './navigator/navigator.component';
 import { VideoComponent } from './video/video.component';
-import { ScrollTrackerDirective } from './directives/scroll-tracker.directive';
+import { ScrollTrackerDirective } from './core/directives/scroll-tracker.directive';
 import { DetailComponent } from './detail/detail.component';
 import {Rating} from "ngx-rating";
 

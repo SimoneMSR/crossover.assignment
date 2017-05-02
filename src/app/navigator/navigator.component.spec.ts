@@ -2,8 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NavigatorComponent } from './navigator.component';
 
-import {EventsService} from "../events.service"; 
-import {UserService} from "../user.service"; 
+import {EventsService} from "../core/services/events.service"; 
+import {UserService} from "../core/services/user.service"; 
 import {Router} from '@angular/router';
 
 describe('NavigatorComponent', () => {

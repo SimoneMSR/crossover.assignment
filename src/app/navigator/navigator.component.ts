@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {EventsService} from "../events.service";
-import {UserService} from "../user.service";
+import {EventsService} from "../core/services/events.service";
+import {UserService} from "../core/services/user.service";
 import {Router} from "@angular/router";
 
 @Component({
