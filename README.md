@@ -1,8 +1,12 @@
-#REPORT
+# CrossPlay 
 
-This document is a report for the work I have done during developing the CrossPlay web app.
+A simple three pages application that lists preferred videos of users. Videos are fetched by a local server (for which I do not own property).
 
-##INDEX
+<p align="center">
+  <img src="screenshots/login.png" width="350"/>
+</p>
+
+## Index
 1. Introduction
 2. Installation
 3. Run
@@ -10,9 +14,7 @@ This document is a report for the work I have done during developing the CrossPl
 5. Test
 6. Documentation
 
-##INTRODUCTION
-
-This app was build to meet the requirements of the app described in the Assignment.pdf file you find in the archive.
+### Introduction
 
 CrossPlay is a Angular2 app, that relies on the following (main) dependencies:
 
@@ -21,7 +23,7 @@ CrossPlay is a Angular2 app, that relies on the following (main) dependencies:
 - ngx-rating 0.0.9 (for the rating funcionality)
 - karma 1.4.1 (for Unit Tests)
 
-##INSTALLATION
+### Installation
 
 The installation require npm packet manager.
 Follow these steps to install the app:
@@ -34,7 +36,7 @@ npm install
 ng build
 cp -R ./dist/* /path/to/node/backend/client
 
-##RUN
+### Run
 
 Follow these steps to run the app:
 
@@ -43,7 +45,11 @@ npm start
 
 open a browser and navigate to localhost:3000 (login:ali, password: password)
 
-##HOW TO DEMO
+<p align="center">
+  <img src="screenshots/video.png" width="350"/>
+</p>
+
+### HOW to DEMO
 
 The following is the default flow that a user can follow to experience the app funcionalities.
 
@@ -68,7 +74,7 @@ The following is the default flow that a user can follow to experience the app f
 - users cannot navigate to localhost:3000/#/list if they are not logged
 - users cannot navigate to localhost:3000/#/detail if they are not logged
 
-##TEST
+### Test
 
 The application has been corredated by a stack of 13 Unit Tests, one for each component/service of the app.
 Follow these steps to test the app
@@ -76,7 +82,7 @@ Follow these steps to test the app
 cd assignment
 ng test
 
-##DOCUMENTATION
+### DOCUMENTATION
 
 CrossPlay has one single Module: the AppModule. This module contains
 - 4 Services (Base,User,Video and Events -service)
@@ -95,7 +101,7 @@ The source folder is thus organized in the following tree:
 	- video
 	- video-list
 
-###Services
+#### Services
 Base, User and Video services are REST services; EventsService is an event manager that uses ReactiveJS.
 
 The UserService manages the user authentication, the VideoService manages the video fetching and rating.
@@ -113,7 +119,7 @@ EventsService manages the interaction between components, signaling the followin
 - notifySuccess (to signal the NotificationComponent that the user must be notified of a successfull operation)
 
 
-###Components
+#### Components
 
 The AppComponent is the app root. It holds 
 - the Navigator and Notification -components
