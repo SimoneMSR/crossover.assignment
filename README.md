@@ -1,6 +1,6 @@
 # CrossPlay 
 
-A simple three pages application that lists preferred videos of users. Videos are fetched by a local server (for which I do not own property).
+A simple three pages application that lists preferred videos of users. Videos are fetched by a local server (for which I do not own property). The client has been written in 24 hours.
 
 <p align="center">
   <img src="screenshots/login.png" width="350"/>
